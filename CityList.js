@@ -1,8 +1,12 @@
 import React from 'react';
 import { FlatList, StyleSheet, Text, TouchableOpacity } from 'react-native';
-import { Constants } from 'expo';
+import Constants from 'expo-constants';
 
 export default class CityList extends React.Component {
+
+    static navigationOptions = {
+        title: 'Cities',
+    };
 
   constructor(props) {
     super(props);
@@ -24,7 +28,12 @@ export default class CityList extends React.Component {
   }
 
   onPressCity(item) {
-    console.log('onPressCity =', item);
+    this.props.navigation.navigate(
+        'Detail',
+        {
+          city: item
+        }
+      );
   }
 
   renderItem(city) {
