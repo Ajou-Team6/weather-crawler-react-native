@@ -1,6 +1,7 @@
 import React from 'react';
 import { FlatList, StyleSheet, Text, TouchableOpacity } from 'react-native';
 import Constants from 'expo-constants';
+import config from './config/config';
 
 export default class CityList extends React.Component {
 
@@ -17,7 +18,7 @@ export default class CityList extends React.Component {
   }
 
   componentDidMount() {
-    fetch('http://demo6468405.mockable.io/weather-crawlers/cities')
+    fetch('http://' + config.ip + ':' + config.port + '/weather-crawler/available-cities')
       .then(response => response.json())
       .then(cities => {
         console.log('cities =', cities.length);
