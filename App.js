@@ -1,11 +1,35 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Button, Text, View } from 'react-native';
+
+class CounterButton extends React.Component {
+  state = {
+    counter: 0,
+  }
+
+  clickHandler = () => {
+    this.setState({
+      counter: this.state.counter + 1,
+    });
+  };
+  
+  render() {
+    return (
+      <View>
+        <Text>{this.state.counter}</Text>
+        <Button title={'click me!'} onPress={this.clickHandler}/>
+      </View>
+    );
+  }
+}
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={[styles.textBig, styles.textRed]}>Hello, World!</Text>
+        <CounterButton />
+        <CounterButton />
+        <CounterButton />
+        <CounterButton />
       </View>
     );
   }
@@ -17,11 +41,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  textBig: {
-    fontSize: 32,
-  },
-  textRed: {
-    color: 'red'
   }
 });
