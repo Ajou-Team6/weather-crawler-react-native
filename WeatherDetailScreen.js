@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import Constants from 'expo-constants';
 import config from './config/config';
+import {RotationHoleLoader} from 'react-native-indicator';
+
 
 export default class WeatherDetailScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
@@ -36,16 +38,18 @@ export default class WeatherDetailScreen extends React.Component {
     if (this.state.isLoading) {
       return (
         <View style={styles.container}>
-          <Text>데이터를 불러오는 중입니다.</Text>
+            <RotationHoleLoader />
         </View>
       )
     }
 
     let celsius = this.state.main.temp - 273.15;
+    let weather = this.state.weather[0].main;
 
     return (
       <View style={styles.container}>
         <Text>온도: {celsius.toFixed(1)}</Text>
+        <Text>날씨: {weather}</Text>
       </View>
     );
   }
