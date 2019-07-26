@@ -50,13 +50,13 @@ export default class WeatherDetailScreen extends React.Component {
     return (
       <View style={styles.container}>
 
-       <Text>온도: {celsius.toFixed(1)}</Text>
+       <Text style={styles.MainText}>{celsius.toFixed(1)}℃</Text>
         <Image
             style={{width: 150, height: 150}}
             source={require('./assets/Sunny.png')}
         />
 
-        <Text>날씨: {weather}</Text>
+        <Text style={styles.BaseText}>{weather}</Text>
 
       </View>
     );
@@ -72,4 +72,12 @@ const styles = StyleSheet.create({
     justifyContent : 'center',
 
   },
+    MainText: {
+      fontSize: 30,
+      fontWeight: 'bold',
+    },
+    BaseText: {
+      fontSize: 25
+    }
+
 });
