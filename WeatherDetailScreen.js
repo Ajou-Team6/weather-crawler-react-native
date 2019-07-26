@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import Constants from 'expo-constants';
 import config from './config/config';
 import {RotationHoleLoader} from 'react-native-indicator';
@@ -50,8 +50,14 @@ export default class WeatherDetailScreen extends React.Component {
     return (
       <View style={styles.container}>
 
-        <Text>온도: {celsius.toFixed(1)}</Text>
+       <Text>온도: {celsius.toFixed(1)}</Text>
+        <Image
+            style={{width: 150, height: 150}}
+            source={require('./assets/Sunny.png')}
+        />
+
         <Text>날씨: {weather}</Text>
+
       </View>
     );
   }
