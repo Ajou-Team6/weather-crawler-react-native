@@ -22,9 +22,10 @@ export default class WeatherDetailScreen extends React.Component {
 
   componentDidMount() {
     const { navigation } = this.props;
-    const city = navigation.getParam('city', null);
 
-    fetch(`http://` + config.ip + `:` + config.port + `/weather-crawler/current-weathers/by-city-name/${city}`)
+    const city = 'Daejeon';
+
+    fetch(`http://demo6468405.mockable.io/weather-crawlers/current-weathers/by-city-name/${city}`)
       .then(response => response.json())
       .then(info => {
         this.setState({
@@ -48,6 +49,7 @@ export default class WeatherDetailScreen extends React.Component {
 
     return (
       <View style={styles.container}>
+
         <Text>온도: {celsius.toFixed(1)}</Text>
         <Text>날씨: {weather}</Text>
       </View>
@@ -59,6 +61,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    marginTop: Constants.statusBarHeight,
+
+    alignItems: 'center',
+    justifyContent : 'center',
+
   },
 });
