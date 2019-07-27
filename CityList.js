@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, StyleSheet, Text, TouchableOpacity, StatusBar, View } from 'react-native';
+import { StyleSheet, Text, TouchableOpacity, StatusBar, View } from 'react-native';
 import { SearchList, HighlightableText } from '@unpourtous/react-native-search-list';
 import Constants from 'expo-constants';
 import config from './config/config';
@@ -48,12 +48,12 @@ export default class CityList extends React.Component {
       <TouchableOpacity style={styles.item} onPress={() => this.onPressCity(city)}>
         <View key={rowID} style={{flex: 1, marginLeft: 20, height: this.rowHeight, justifyContent: 'center'}}>
           <HighlightableText
+            matcher={city.matcher}
             text={city.searchStr}
             textColor={'#000'}
             hightlightTextColor={'#0069c0'}
           />
         </View>
-        <Text style={styles.text}>{city.searchStr}</Text>
       </TouchableOpacity>
     )
   }
@@ -128,10 +128,6 @@ const styles = StyleSheet.create({
 
     borderWidth: 1,
     borderColor: 'orange',
-  },
-  text: {
-    fontSize: 20,
-    textAlign: 'center',
   },
   emptyDataSource: {
     flex: 1,

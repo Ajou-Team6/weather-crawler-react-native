@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native';
-import Constants from 'expo-constants';
 import config from './config/config';
 import {RotationHoleLoader} from 'react-native-indicator';
 
@@ -23,7 +22,6 @@ export default class WeatherDetailScreen extends React.Component {
     const { navigation } = this.props;
     const city = navigation.getParam('city', null);
 
-//    fetch('http://' + config.ip + ':' + config.port + '/weather-crawler/current-weathers/by-city-name/{city}')
       fetch(`http://` + config.ip + `:` + config.port + `/weather-crawler/current-weathers/by-city-name/${city}`)
       .then(response => response.json())
       .then(info => {
