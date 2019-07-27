@@ -44,12 +44,6 @@ export default class WeatherDetailScreen extends React.Component {
       )
     }
 
-
-// main-> 사진 and 글씨 표시
-// 온도
-// 습도
-// 바람
-
     let celsius = this.state.main.temp - 273.15;
     let weather = this.state.weather[0].main;
     let humidity = this.state.main.humidity;
