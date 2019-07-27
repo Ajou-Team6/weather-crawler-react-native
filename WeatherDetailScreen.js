@@ -1,10 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View, Image, ImageBackground } from 'react-native';
 import Constants from 'expo-constants';
 import config from './config/config';
 import {RotationHoleLoader} from 'react-native-indicator';
-
-var weatherCheck = require('./CheckWeatherPicture')
 
 export default class WeatherDetailScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
@@ -117,9 +115,15 @@ export default class WeatherDetailScreen extends React.Component {
 
 
     return (
+
+
+    <ImageBackground style={ styles.imgBackground }
+                     resizeMode='cover'
+                     source={require('./assets/background.png')}>
       <View style={styles.container}>
 
        <Text style={styles.MainText}>{celsius.toFixed(1)}℃</Text>
+
 
 
         <Image
@@ -127,30 +131,38 @@ export default class WeatherDetailScreen extends React.Component {
                    source={imagePath}
         />
 
-        <Text style={styles.BaseText}>humidity: {humidity}</Text>
+        <Text style={styles.BaseText}>Humidity - {humidity}%</Text>
 
         <Text style={styles.BaseText}>{weather}</Text>
 
       </View>
+    </ImageBackground>
     );
   }
 }
-
+//<ImageBackground source={'./assets/weather_icon/background.png'}>
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+//    backgroundColor: '#fff',
 
     alignItems: 'center',
     justifyContent : 'center',
+    backgroundColor: 'transparent',
+    alignItems: 'center',
 
   },
     MainText: {
-      fontSize: 30,
+      fontSize: 50,
       fontWeight: 'bold',
     },
     BaseText: {
-      fontSize: 25
-    }
+      fontSize: 20
+    },
+imgBackground: {
+        width: '100%',
+        height: '100%',
+        flex: 1
+},
 
 });
