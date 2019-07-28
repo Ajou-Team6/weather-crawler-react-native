@@ -19,3 +19,5 @@ npm install --save
 ```
 npm start
 ```
+
+### 4. Setting config/config.js
